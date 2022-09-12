@@ -10,11 +10,11 @@ class BooksController < ApplicationController
   def create
     @book = Book.new(book_params)
     if @book.save
-     redirect_to book_path(book.id)
-     flash[:notice] = "successfully"
+      redirect_to book_path(@book.id)
+      flash[:notice] = "successfully"
     else
-     @books = Book.all
-     render :index
+      @books = Book.all
+      render :index
     end
   end
 
@@ -27,30 +27,25 @@ class BooksController < ApplicationController
   end
 
   def update
-    book = Book.find(params[:id])
-    book.update(book_params)
-     if @book.save
-        flash[:notice] = "successfully"
-        redirect_to book_path(book.id)
-     else
-        @books = Book.all
-        render 'index'
-　　 end
+    @book = Book.find(params[:id])
+    if @book.update(book_params)
+      flash[:notice] = "successfully"
+      redirect_to book_path(book.id)
+    else
+      @books = Book.all
+      render 'edit'
+    end
   end
 
   def destroy
-    book = Book.find(params[:id])
-    book.destroy
-    if @book.save
-        flash[:notice] = "successfully"
-        redirect_to book_path(book.id)
-    else
-        @books = Book.all
-        render 'index'
-　　end
+    @book = Book.find(params[:id])
+    if @book.destroy
+      flash[:alert] = "error!"
+    redirect_to books_path
+    end
   end
 
-   private
+  private
   def book_params
     params.require(:book).permit(:title, :body, :image)
   end

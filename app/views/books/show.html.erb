@@ -1,7 +1,7 @@
 <body>
 
 <p id="notice">Book was successfully created.</p>
-<p><strong>title:</strong>
+<p><strong>Title:</strong>
  <%= @book.title %>
 </p>
 
@@ -10,8 +10,8 @@
 </p>
 
 <%= link_to "Edit", edit_book_path(@book.id) %>
- " ｜ "
-<%= link_to "Back", book_path(book.id) %>
+ |
+<%= link_to "Back", books_path %>
 
 
 </body>
