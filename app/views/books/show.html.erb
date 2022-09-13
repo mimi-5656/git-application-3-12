@@ -1,6 +1,11 @@
 <body>
 
-<p id="notice">Book was successfully created.</p>
+<% if flash[:notice] %>
+    <div class="flash">
+         <%= flash[:notice] %>
+    </div>
+<% end %>
+
 <p><strong>Title:</strong>
  <%= @book.title %>
 </p>

@@ -67,11 +67,11 @@ label{
   margin-bottom: 10px;
 }
 
-#notice{
+.flash{
   color: green;
 }
 
- #error_explanation{
+#error_explanation{
   width: 450px;
   border: 2px solid red;
   padding: 7px;

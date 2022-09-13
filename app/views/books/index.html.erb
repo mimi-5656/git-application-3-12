@@ -1,5 +1,10 @@
 <body>
-  <p id="notice"></p>
+  <% if flash[:notice] %>
+    <div class="flash">
+         <%= flash[:notice] %>
+    </div>
+  <% end %>
+
   <h1>Books</h1>
 
  <table>
@@ -18,7 +23,7 @@
       <td><%= book.body %></td>
       <td><%= link_to "Show", book_path(book.id) %></td>
       <td><%= link_to "Edit", edit_book_path(book.id) %></td>
-      <td><%= link_to "Destroy", book_path(book.id), method: :delete, "date-confirm" => "error!" %></td>
+      <td><%= link_to "Destroy", book_path(book.id), method: :delete, "date-confirm" => "Aer You Sure?" %></td>
      </tr>
    </tbody>
    <% end %>
